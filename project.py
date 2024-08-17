@@ -121,8 +121,13 @@ def main():
             expense6 = float(miscEntry.get())
             total_expenses = expense1 + expense2 + expense3 + expense4 + expense5 + expense6
             total = total_income - total_expenses
-            tkinter.messagebox.showinfo("Total Earnings", "You have $" +
-                                        str(format(total, '.2f')))
+            if total >= 0:
+                tkinter.messagebox.showinfo("Total Earnings", "You have $" +
+                                            str(format(total, '.2f')))
+            else:
+                tkinter.messagebox.showinfo("Total Earnings", "You have $" +
+                                            str(format(total, '.2f'))\
+                                            + "\nYou're in debt.")
 
         calcButton = tkinter.Button(frame5, text = "CALCULATE", font = 20,
                                     bg = "White", fg = "#233027",
