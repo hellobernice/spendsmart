@@ -29,6 +29,7 @@ def main():
 
     #-----------------------------CALCULATOR------------------------------
     def calc():
+        #create toplvl window
         calcTopLvl = tkinter.Toplevel()
         calcTopLvl.config(bg = "#b5e1c1")
         calcTopLvl.geometry("1200x600")
@@ -61,7 +62,8 @@ def main():
         frame5 = tkinter.Frame(calcTopLvl)
         frame5.config(bg = "#b5e1c1")
         frame5.pack(side = "left")
-        
+
+        #widgets in frame1
         incomeLabel = tkinter.Label(frame1, font = 20,
                                     text = "Monthly Salary:", bg = "#b5e1c1",
                                     fg = "#233027")
@@ -70,11 +72,13 @@ def main():
                                    bg = "#b5e1c1", fg = "#233027")
         otherLabel.pack(side = "top", pady = 10, padx = 35)
 
+        #widgets in frame2
         incomeEntry = tkinter.Entry(frame2, font = 20)
         incomeEntry.pack(side = "top", pady = 10, padx = 35)
         otherEntry = tkinter.Entry(frame2, font = 20)
         otherEntry.pack(side = "top", pady = 10, padx = 35)
 
+        #widgets in frame3
         rentLabel = tkinter.Label(frame3, font = 20, text = "Rent/Mortgage:",
                                    bg = "#b5e1c1", fg = "#233027")
         rentLabel.pack(side = "top", pady = 10, padx = 35)
@@ -95,6 +99,7 @@ def main():
                                    bg = "#b5e1c1", fg = "#233027")
         miscLabel.pack(side = "top", pady = 10, padx = 35)
 
+        #widgets in frame4
         rentEntry = tkinter.Entry(frame4, font = 20)
         rentEntry.pack(side = "top", pady = 10, padx = 35)
         utilityEntry = tkinter.Entry(frame4, font = 20)
@@ -108,6 +113,7 @@ def main():
         miscEntry = tkinter.Entry(frame4, font = 20)
         miscEntry.pack(side = "top", pady = 10, padx = 35)
 
+        #callback fuction for calculate button
         def total_earnings():
             income1 = float(incomeEntry.get())
             income2 = float(otherEntry.get())
@@ -121,11 +127,21 @@ def main():
             expense6 = float(miscEntry.get())
             total_expenses = expense1 + expense2 + expense3 + expense4 + expense5 + expense6
             total = total_income - total_expenses
-            if total >= 0:
-                tkinter.messagebox.showinfo("Total Earnings", "You have $" +
+            if total >= 0:#if total earnings is equal to or greater than 0
+                tkinter.messagebox.showinfo("Total Earnings",
+                                            "Total Income: $" +
+                                            str(format(total_income, '.2f')) +
+                                            "\nTotal Expenses: $" +
+                                            str(format(total_expenses, '.2f')) +
+                                            "\nYou have $" +
                                             str(format(total, '.2f')))
             else:
-                tkinter.messagebox.showinfo("Total Earnings", "You have $" +
+                tkinter.messagebox.showinfo("Total Earnings",
+                                            "Total Income: $" +
+                                            str(format(total_income, '.2f')) +
+                                            "\nTotal Expenses: $" +
+                                            str(format(total_expenses, '.2f')) +
+                                            "\nYou have $" +
                                             str(format(total, '.2f'))\
                                             + "\nYou're in debt.")
 
